@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RSS Feed</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <form action="/" method="get">
+      <label for="xml_url">Select Source:</label>
+      <select name="xml_url" id="xml_url">
+          {% for label, url in xml_urls.items() %}
+              <option value="{{ url }}" {% if url == selected_xml_url %}selected{% endif %}>{{ label }}</option>
+          {% endfor %}
+      </select>
+      <input type="submit" value="Fetch Data">
+  </form>
+    <div class="container mt-5">
+      <div class="row">
+        {% for item in data %}
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <img
+            onload="if(this.naturalWidth < 300){this.style.display='none';}else{this.style.display='block';}"
+            onerror = "this.style.display='none';"
+            src="{{ item.thumbnail_url }}"
+            class="card-img-top"
+            alt="Thumbnail"
+          />
+            <div class="card-body">
+              <h5 class="card-title">{{ item.title }}</h5>
+              <p class="card-text">{{ item.description | safe}}</p>
+              <p style="font-size: 14px">
+                <strong>Link:</strong>
+                <a href="{{ item.link }}" target="_blank">{{ item.link }}</a>
+              </p>
+              <p><strong>Date:</strong> {{ item.pubDate }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
