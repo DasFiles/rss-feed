@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import requests
 from bs4 import BeautifulSoup
 import html
+import random
 
 app = Flask(__name__)
 
@@ -43,8 +44,11 @@ def extract_data_from_xml(xml_content):
 
 @app.route('/')
 def main():
-    # Default XML URL
-    default_xml_url = "https://www.newscientist.com/section/features/feed/"
+      # Get the available XML URLs
+    xml_urls = get_available_xml_urls()
+
+    # Randomly select a default XML URL
+    default_xml_url = random.choice(list(xml_urls.values()))
 
     # Get the selected XML URL from the query parameters
     selected_xml_url = request.args.get('xml_url', default_xml_url)
@@ -74,12 +78,78 @@ def main():
 def get_available_xml_urls():
     # Define the available XML URLs and their corresponding labels
     xml_urls = {
-        "New Scientist": "https://www.newscientist.com/section/features/feed/",
-        "Phys.org": "https://phys.org/rss-feed/",
-        "Scientific American": "http://rss.sciam.com/ScientificAmerican-Global",
-        "NASA Image Details": "https://www.nasa.gov/feeds/iotd-feed/",
-        "Science News": "https://www.sciencenews.org/feed",
-        "Science Daily": "https://www.sciencedaily.com/rss/all.xml",
+"General | NBC News Top Stories": "http://feeds.nbcnews.com/feeds/topstories",
+"General | NBC News World News": "http://feeds.nbcnews.com/feeds/worldnews",
+"General | ABC News": "http://feeds.abcnews.com/abcnews/usheadlines",
+"General | CNN Top Stories": "http://rss.cnn.com/rss/cnn_topstories.rss",
+"General | CBS News": "http://www.cbsnews.com/latest/rss/main",
+
+"General | Quartz": "http://qz.com/feed",
+"General | The Guardian USA": "http://www.theguardian.com/world/usa/rss",
+"General | Politico Picks": "http://www.politico.com/rss/politicopicks.xml",
+"Politics | Politico Magazine": "http://www.politico.com/rss/magazine.xml",
+"Politics | Politico Top 10 Blogs": "http://www.politico.com/rss/Top10Blogs.xml",
+"Politics | Huffington Post Politics": "http://www.huffingtonpost.com/feeds/verticals/politics/index.xml",
+"Politics | CNN All Politics": "http://rss.cnn.com/rss/cnn_allpolitics.rss",
+"Politics | NBC News Politics": "http://feeds.nbcnews.com/feeds/nbcpolitics",
+"Politics | NPR Politics Podcast": "http://www.npr.org/rss/rss.php?id=1014",
+"Politics | NPR Politics": "http://www.npr.org/rss/rss.php?id=5",
+
+"Business | CNN Business": "http://rss.cnn.com/rss/edition_business.rss",
+"Business | Bloomberg Law Podcast": "http://www.bloomberg.com/feed/podcast/law.xml",
+
+"US tech | CNN Tech": "http://rss.cnn.com/rss/cnn_tech.rss",
+"US tech | New York Times Technology": "http://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+"US tech | Fox News Tech": "http://feeds.foxnews.com/foxnews/tech",
+"US tech | TechCrunch": "http://feeds.feedburner.com/TechCrunch/",
+"US tech | Wired": "http://feeds.wired.com/wired/index",
+"US tech | CNET News": "http://www.cnet.com/rss/news/",
+"US tech | CNET iPhone Update": "http://www.cnet.com/rss/iphone-update/",
+"US tech | CNET Android Update": "http://www.cnet.com/rss/android-update/",
+
+"Health | The Guardian Society Health": "http://www.theguardian.com/society/health/rss",
+"Health | Men's Health": "http://www.menshealth.com/events-promotions/washpofeed",
+"Health | Glamour Health & Fitness": "http://feeds.glamour.com/glamour/health_fitness",
+"Health | New Scientist Health": "http://feeds.newscientist.com/health",
+"Health | Time Health": "http://time.com/health/feed/",
+
+"Entertainment | The New Yorker Culture": "http://www.newyorker.com/feed/culture",
+"Entertainment | BuzzFeed TV and Movies": "http://www.buzzfeed.com/tvandmovies.xml",
+"Entertainment | TMZ": "http://www.tmz.com/rss.xml",
+"Entertainment | CBS News Entertainment": "http://www.cbsnews.com/latest/rss/entertainment",
+"Entertainment | ABC News Entertainment Headlines": "http://feeds.abcnews.com/abcnews/entertainmentheadlines",
+"ABC News | US Headline":"http://feeds.abcnews.com/abcnews/usheadlines",
+"Gaming | GamesRadar": "http://www.gamesradar.com/all-platforms/news/rss/",
+"Gaming | TechCrunch Gaming": "http://feeds.feedburner.com/TechCrunch/gaming",
+"Gaming | CNET Gaming": "http://www.cnet.com/rss/gaming/",
+"Gaming | Ars Technica Gaming": "http://feeds.arstechnica.com/arstechnica/gaming",
+
+"Times Of India | Top Stories": "https://timesofindia.indiatimes.com/rssfeedstopstories.cms",
+"Times Of India | India":"https://timesofindia.indiatimes.com/rssfeeds/296589292.cms",
+"Times Of India | World":"https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms",
+"The Hindu | News":"https://www.thehindu.com/news/feeder/default.rss",
+"The Hindu | Opinion":"https://www.thehindu.com/opinion/feeder/default.rss",
+"LiveMint | News":"https://www.livemint.com/rss/news",
+"LiveMint | Opinion":"https://www.livemint.com/rss/opinion",
+"India Today | Home":"https://www.indiatoday.in/rss/home",
+"India Today | The Big Story":"https://www.indiatoday.in/rss/1206614",
+"The New York Time | World":"https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
+"The New York Time | U.S.":"https://rss.nytimes.com/services/xml/rss/nyt/US.xml",
+"The New York Time | Science":"https://rss.nytimes.com/services/xml/rss/nyt/Science.xml",
+"New Scientist | Features": "https://www.newscientist.com/section/features/feed/",
+"New Scientist | All Articles": "https://www.newscientist.com/feed/home/",
+"New Scientist | News": "https://www.newscientist.com/section/news/feed/",
+"Phys.org ": "https://phys.org/rss-feed/",
+"MIT | Latest News":"https://news.mit.edu/rss/feed",
+"MIT | Research News":"https://news.mit.edu/rss/research",
+"Scientific American | Global": "http://rss.sciam.com/ScientificAmerican-Global",
+"NASA | Image Details": "https://www.nasa.gov/feeds/iotd-feed/",
+"Science News": "https://www.sciencenews.org/feed",
+"Science Daily | All": "https://www.sciencedaily.com/rss/all.xml",
+"Science Daily | Top Science": "https://www.sciencedaily.com/rss/top/science.xml",
+"Science Daily | Health": "https://www.sciencedaily.com/rss/top/health.xml",
+
+
         # Add more sources as needed
     }
     return xml_urls
