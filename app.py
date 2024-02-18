@@ -83,7 +83,6 @@ def get_available_xml_urls():
 "General | ABC News": "http://feeds.abcnews.com/abcnews/usheadlines",
 "General | CNN Top Stories": "http://rss.cnn.com/rss/cnn_topstories.rss",
 "General | CBS News": "http://www.cbsnews.com/latest/rss/main",
-
 "General | Quartz": "http://qz.com/feed",
 "General | The Guardian USA": "http://www.theguardian.com/world/usa/rss",
 "General | Politico Picks": "http://www.politico.com/rss/politicopicks.xml",
@@ -94,10 +93,7 @@ def get_available_xml_urls():
 "Politics | NBC News Politics": "http://feeds.nbcnews.com/feeds/nbcpolitics",
 "Politics | NPR Politics Podcast": "http://www.npr.org/rss/rss.php?id=1014",
 "Politics | NPR Politics": "http://www.npr.org/rss/rss.php?id=5",
-
 "Business | CNN Business": "http://rss.cnn.com/rss/edition_business.rss",
-"Business | Bloomberg Law Podcast": "http://www.bloomberg.com/feed/podcast/law.xml",
-
 "US tech | CNN Tech": "http://rss.cnn.com/rss/cnn_tech.rss",
 "US tech | New York Times Technology": "http://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
 "US tech | Fox News Tech": "http://feeds.foxnews.com/foxnews/tech",
@@ -106,13 +102,11 @@ def get_available_xml_urls():
 "US tech | CNET News": "http://www.cnet.com/rss/news/",
 "US tech | CNET iPhone Update": "http://www.cnet.com/rss/iphone-update/",
 "US tech | CNET Android Update": "http://www.cnet.com/rss/android-update/",
-
 "Health | The Guardian Society Health": "http://www.theguardian.com/society/health/rss",
 "Health | Men's Health": "http://www.menshealth.com/events-promotions/washpofeed",
 "Health | Glamour Health & Fitness": "http://feeds.glamour.com/glamour/health_fitness",
 "Health | New Scientist Health": "http://feeds.newscientist.com/health",
 "Health | Time Health": "http://time.com/health/feed/",
-
 "Entertainment | The New Yorker Culture": "http://www.newyorker.com/feed/culture",
 "Entertainment | BuzzFeed TV and Movies": "http://www.buzzfeed.com/tvandmovies.xml",
 "Entertainment | TMZ": "http://www.tmz.com/rss.xml",
@@ -123,7 +117,6 @@ def get_available_xml_urls():
 "Gaming | TechCrunch Gaming": "http://feeds.feedburner.com/TechCrunch/gaming",
 "Gaming | CNET Gaming": "http://www.cnet.com/rss/gaming/",
 "Gaming | Ars Technica Gaming": "http://feeds.arstechnica.com/arstechnica/gaming",
-
 "Times Of India | Top Stories": "https://timesofindia.indiatimes.com/rssfeedstopstories.cms",
 "Times Of India | India":"https://timesofindia.indiatimes.com/rssfeeds/296589292.cms",
 "Times Of India | World":"https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms",
