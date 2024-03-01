@@ -149,3 +149,5 @@ def get_available_xml_urls():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+#install{ pip install flask requests beautifulsoup4 lxml}
