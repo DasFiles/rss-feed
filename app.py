@@ -85,7 +85,6 @@ def get_available_xml_urls():
 "General | CBS News": "http://www.cbsnews.com/latest/rss/main",
 "General | Quartz": "http://qz.com/feed",
 "General | The Guardian USA": "http://www.theguardian.com/world/usa/rss",
-"Politics | Huffington Post Politics": "http://www.huffingtonpost.com/feeds/verticals/politics/index.xml",
 "Politics | CNN All Politics": "http://rss.cnn.com/rss/cnn_allpolitics.rss",
 "Politics | NBC News Politics": "http://feeds.nbcnews.com/feeds/nbcpolitics",
 "Politics | NPR Politics Podcast": "http://www.npr.org/rss/rss.php?id=1014",
