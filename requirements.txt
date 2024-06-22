@@ -3,3 +3,4 @@ requests
 beautifulsoup4
 lxml
 Gunicorn
+pip>=23.0.1
